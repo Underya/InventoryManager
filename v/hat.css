@@ -1,0 +1,11 @@
+.hattable{
+	border:10px;
+	text-align:center;
+	width:60%;
+	height:80px;
+	margin: auto; 
+}
+
+.hattable button{
+	height:45px;	
+}

@@ -1,0 +1,16 @@
+<table class='rblock_table' id='r_table'>
+	<tr> <td> <button style='font-size:17' onclick='load()'> Скачать </button></td></tr>
+	<tr> <td> <button style='font-size:21' onclick="history.back()"> Назад </button></td></tr>
+</table>
+
+<script>
+function load(){
+	//Создание строки
+	var url = 's_load.php?req='
+	//Получение объекта с запросом
+	var t = document.getElementById('main_table');
+	//Добавление к ссылке запроса, использованного при создании таблицы
+	url += t.getAttribute("request_create");
+	document.location.href=url;
+}
+</script>

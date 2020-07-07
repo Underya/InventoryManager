@@ -1,0 +1,42 @@
+<!--Данный модуль содержит форму, в котором описаны-->
+<div class='create_order'>
+	<form method='post' action='s_order.php'>
+		
+		<p>Выберите один или несколько элментов</p>
+		
+		<p>Помещение</p>
+		<select name='room[]' multiple='true' size=6>
+			<option_room>
+		</select>
+		
+		<p>Типы</p>
+		<select name='type[]' multiple='true' size=6>
+			<option_type>
+		</select>
+		
+		<p>Ответсвенные</p>
+		<select name='man[]' multiple='true' size=6>
+			<option_man>
+		</select>
+		
+		<p>Группы</p>
+		<select name='group[]' multiple='true' size=6>
+			<option_group>
+		</select>
+		
+		
+		<input type='submit'/>
+		
+	</form>
+	
+</div>
+
+<div class = 'create_order2'>
+	<form method='post' action='s_order.php'>
+		<p>Поиск по </p>
+		<p>инвентанрном номеру</p>
+		<input type='text' name='invent[]'/>
+		<input type='hidden' value='true' name='inv_sel'>
+		<input type='submit'/>
+	</form>
+</div>

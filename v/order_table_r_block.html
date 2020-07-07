@@ -1,0 +1,100 @@
+<table class='rblock_table' id='r_table'>
+	<tr> <td> <button style='font-size:17' onclick='load()'> Скачать </button></td></tr>
+	<tr> <td> <button style='font-size:17' onclick='sel_for_poisk()'> Отметить </button></td></tr>
+	<tr> <td> <button style='font-size:17' onclick='add_table_add_model(this)'> Добавить Модель </button></td></tr>
+	<tr> <td> <button style='font-size:20' onclick='form_add(this)'> Добавить </button></td> </tr>
+	<tr> <td> <button style='font-size:21' onclick="history.back()"> Назад </button></td></tr>
+</table>
+
+<script>
+//Функция для получения 
+function load(){
+	//Создание строки
+	var url = 's_load.php?req='
+	//Получение объекта с запросом
+	var t = document.getElementById('main_table');
+	//Добавление к ссылке запроса, использованного при создании таблицы
+	url += t.getAttribute("request_create");
+	document.location.href=url;
+}
+
+//отметка всех строк для поиска
+function sel_for_poisk(){
+	//Получение ссылки на таблицу
+	var table = document.getElementById('main_table');
+	//Если уже не добавлено
+	if(table.getAttribute('checkb')) return;
+	//На таблицу доб спец атрибута
+	table.setAttribute('checkb', true);
+	//Получение ссылки на строчки
+	var rows = table.rows;
+	//Смещение таблицы с заголовком
+	var empty_cell =  rows[0].insertCell(0);
+	empty_cell.setAttribute('border', '0 px');
+	//Цикл по всем строчкам
+	for(var i = 1; i < rows.length; i++){
+		//Получение строчки
+		var row = rows[i];			
+		var cell = row.insertCell(0);
+		//Установка атрибута, что это чек бокс
+		cell.setAttribute('checkb', true);
+		//Создание чек бокса
+		var label = document.createElement('input');
+		label.setAttribute('type', 'checkbox');
+		label.setAttribute('class', 'c_check');
+		//Добавить в ячейку
+		cell.appendChild(label);
+		//указать, что метка не выделена
+		label.setAttribute('found', 'n');
+		//добавить функцию, вызываемую при нажатии
+		label.setAttribute('onclick', 'click_label(this)');
+		//Выделяем строку как не найденную
+		set_not_found(row);
+		//Удаление кнопок изменить и удалить
+		row.deleteCell(row.cells.length - 1);
+		row.deleteCell(row.cells.length - 1);
+	}
+	//Из праваго блока удаляются кнопки
+	var r_block = document.getElementById('r_table');
+	r_block.deleteRow(0);
+	r_block.deleteRow(0);
+	r_block.deleteRow(0);
+	r_block.deleteRow(0);
+}
+
+//Функция при нажатии на кнопку нахождения
+function click_label(label){
+	//Получение строчки, где находиться места
+	var row = label.parentNode.parentNode;
+	//В зависимости от метки
+	if(label.getAttribute('found') == 'f'){ 
+		label.setAttribute('found', 'n');
+		set_not_found(row);
+	} else {
+		label.setAttribute('found', 'f');
+		set_found(row);
+	}
+}
+
+//Выделеные строчки c не найденным предметом
+function set_not_found(row){
+	//Цикл по всем строчкам
+	for(var i = 1; i < row.cells.length ; i++){
+		//Получение редактируемой ячейки
+		var cell = row.cells[i];
+		//Запоминание старого фона
+		cell.setAttribute('found_bdcolor', cell.getAttribute('bgcolor'));
+		cell.setAttribute('bgcolor', '#f7c8c8');
+	}
+}
+
+//выделение строчки с найденным предметом
+function set_found(row){
+	//Цикл по всем строчкам
+	for(var i = 1; i < row.cells.length ; i++){
+		//Получение редактируемой ячейки
+		var cell = row.cells[i];
+		cell.setAttribute('bgcolor', cell.getAttribute('found_bdcolor'));
+	}
+}
+</script>

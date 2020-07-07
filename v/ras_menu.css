@@ -1,0 +1,18 @@
+.menu ul {
+  margin: 0;
+  list-style: none;
+  padding-left: 20px;
+  display: none;
+}
+
+.menu .title::before {
+  font-size: 80%;
+  color: green;
+}
+
+.menu.open .title::before {
+}
+
+.menu.open ul {
+  display: block;
+}

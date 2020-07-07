@@ -1,0 +1,29 @@
+tr, td{
+	border:1px solid black;
+	margin:auto;
+	font-size:20px;
+}
+
+.ctbody { display: block; }
+
+[id="main_table"] tbody{
+    overflow-y:auto;
+}
+
+table{
+	margin:auto;
+}
+
+.item{
+	margin:0px;
+	width:70%;
+}
+
+.item td{
+	width:100px;
+}
+
+.item_row td{
+	border:1px solid black;
+	table-layout:fixed
+}

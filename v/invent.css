@@ -1,0 +1,47 @@
+.create_order{
+	position:fixed;
+	width:260px;
+	height:500px;
+	top:10%;
+	right:45%;
+	font-size:20;
+}
+
+.create_order select{
+	width:200;
+}
+
+.create_order p{
+	margin:3px;
+}
+
+.create_order input, select {
+	margin:2px;
+}
+
+.create_order2{
+	position:fixed;
+	width:260px;
+	height:500px;
+	top:13%;
+	right:30%;
+	font-size:20;
+}
+
+.create_order2 select{
+	width:200;
+}
+
+.create_order2 p{
+	margin:3px;
+}
+
+.c_check {
+  transform:scale(1.9);
+  opacity:0.9;
+  cursor:pointer;
+}
+
+.create_order2 input, select {
+	margin:2px;
+}
